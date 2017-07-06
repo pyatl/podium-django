@@ -1,0 +1,9 @@
+*.pyc
+*.pyo
+*.db
+.DS_Store
+.coverage
+/static
+/media
+*.swp
+.env
