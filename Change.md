@@ -18,7 +18,7 @@
     -*Add "django-crispy-forms1.6.1"*
     -*Add "django-registration-redux 1.6"*
     
-## New files :##
+## New files: ##
 
 -**templates/base.html**
     -*Move "base.html" to project folder*
