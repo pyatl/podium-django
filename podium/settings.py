@@ -30,19 +30,30 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+
+    #Django Apps
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #Podium Apps
+
     'podium.talks',
+    
+    #Third Party  Apps
+
+    'crispy_forms',
+    'registration'
 ]
 
 MIDDLEWARE = [
@@ -61,7 +72,13 @@ ROOT_URLCONF = 'podium.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [   
+                    os.path.join(BASE_DIR,'templates'),
+                    os.path.join(BASE_DIR,'templates/talks'),
+
+
+
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,8 +99,12 @@ WSGI_APPLICATION = 'podium.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'podium',
+        'USER':'citi',
+        'PASSWORD':'Sed-7171',
+        'HOST': 'localhost',
+        'PORT':'',
     }
 }
 
@@ -112,6 +133,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
+
+CRISPY_TEMPLATE_PACK ='bootstrap3'
+
 
 LANGUAGE_CODE = 'en-us'
 

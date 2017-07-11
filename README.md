@@ -16,6 +16,8 @@ https://pyatl-podium.herokuapp.com/
 - Whitenoise 3.3.0 - Serve static files from Django on Heroku
 - dj-database-url 0.4.2 - Parse database connections from 12-factor style URLs 
 - python-dotenv 0.6.4 - Parse environment variables from .env files
+- django-registration-redux 1.6 -  registration app for Django
+- django-crispy-forms 1.6.1- Bootstrap inspired. Best way to have Django DRY forms
 
 NOTE:  Podium is designed to be run on Heroku but can be used on any platform
 supporting [12 Factor Apps](https://12factor.net/).
@@ -26,13 +28,16 @@ supporting [12 Factor Apps](https://12factor.net/).
 - Create a .env file from the example.env file at the root of the project.
 - Edit your .env file to include your own environment values for secret keys,
 database urls, etc.
-- Run `python manage.py migrate` to run all database migrations.
+
+- Run `python manage.py migrate` to apply all database migrations.
 - Run `python manage.py createsuperuser` to create an admin user login.
 - Run `python manage.py runserver --noinput` for a development environment, run
 Gunicorn directly from Procfile, or use the [Django documentation](
 https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/) to set up a
 WSGI-compliant webserver of your choice.
 
+** Table errors in browser @admin/talks or @admin/sessions**
+- Run `python manage.py makemigrations` to re-create database migrations.
 
 ## Contributing ##
 [Submit an issue](https://github.com/pyatl/podium-django/issues) or see our
