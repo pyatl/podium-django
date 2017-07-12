@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .forms import TalkSubmissionForm
+from .models import Talk, Session
 
 
 def submit_talk_view(request):
@@ -19,7 +20,11 @@ def talk_detail_view(request, talk_id):
 
 
 def session_list_view(request):
-    pass
+    sessions = Session.objects.all()
+    context = {
+                'sessions':sessions
+     }
+    return render(request, 'talks/session.html', context)
 
 
 def session_talk_list_view(request):
