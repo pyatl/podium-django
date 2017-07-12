@@ -8,7 +8,7 @@ def submit_talk_view(request):
     if form.is_valid():
         form.save()
         form = TalkSubmissionForm()
-
+        return HttpResponseRedirect(reverse_lazy('sessions',))
     return render(request, 'talks/submit.html', {
         'form': form,
     })
