@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+		<div class="row ">
+			<div class="
+				col-xs-12 
+				col-sm-10 col-sm-push-1
+				col-md-8 col-md-push-2
+				col-lg-8 col-lg-push-2
+				" > 
+				<h2 class="">Sessions</h2>
+
+				{%for session in sessions%}
+				<div class="panel panel-default shadow ">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading"><h3> Thurs. {{session.date}}</h3></div>
+					  <div class="panel-body">
+					    <h4>{{session.description}}</h4>
+					  </div>
+
+					  <!-- Table -->
+					  <table class="table">
+					  <thead>
+						  <tr>
+							    <th>Title</th>
+							    <th>Speaker</th>
+							    <th>Email</th>
+
+							    {%if user.is_staff%}	
+							    <th>Status</th>
+							    {%endif%}
+						    </tr>
+					 </thead>
+
+					 <tbody>
+
+					     	{%for talk in s.talks_available.all%}
+					    	<tr>
+					    		<td>{{talk.title}}</td>
+					    		<td>{{talk.speaker_name}}</td>
+					    		<td>{{talk.speaker_email}}</td>
+
+					    		{%if user.is_staff%}	
+					    		<td>{{talk.status}}</td>
+					    		{%endif%}
+					    	</tr>
+					    	{%endfor%}
+
+					    </tbody>
+					  </table>
+				</div>
+				{%endfor%}
+				
+			</div>
+		</div>
+	</div>
+{%endblock%}
