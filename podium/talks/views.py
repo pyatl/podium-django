@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
-
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse_lazy
 from .forms import TalkSubmissionForm
+from .models import Talk, Session
+
 
 
 def submit_talk_view(request):
