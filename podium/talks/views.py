@@ -4,8 +4,6 @@ from django.core.urlresolvers import reverse_lazy
 from .forms import TalkSubmissionForm
 from .models import Talk, Session
 
-
-
 def submit_talk_view(request):
     form = TalkSubmissionForm(request.POST or None)
     if form.is_valid():
