@@ -20,6 +20,9 @@ Once you're familiar with Django and the basic workflow, check out the issue
 tracker and look for issues flagged for beginners to find something to work
 on.
 
+If you're very new to contributing to a project on Github, please refer to
+our [Beginner's Guide](BEGINNERS.md)
+
 ## Documentation ##
 We always welcome additional documentation that helps clarify the project,
 code structure, etc.  reStructuredText is the preferred format for
