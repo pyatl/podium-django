@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
-
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse_lazy
 from .forms import TalkSubmissionForm
+from .models import Session
 
 
 def submit_talk_view(request):
@@ -8,7 +10,7 @@ def submit_talk_view(request):
     if form.is_valid():
         form.save()
         form = TalkSubmissionForm()
-
+        return HttpResponseRedirect(reverse_lazy('talks-sessions'))
     return render(request, 'talks/submit.html', {
         'form': form,
     })
@@ -19,7 +21,9 @@ def talk_detail_view(request, talk_id):
 
 
 def session_list_view(request):
-    pass
+    sessions = Session.objects.all()
+    context = {'sessions': sessions}
+    return render(request, 'talks/sessions.html', context)
 
 
 def session_talk_list_view(request):
