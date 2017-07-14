@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content%}
+{%for session in sessions%}
+<div >
+	
+	  <div><h3> Thurs. {{session.date}}</h3></div>
+	  <div >
+	    <h4>{{session.description}}</h4>
+	  </div>
+
+	  <!-- Table -->
+	  <table>
+	  <thead>
+		  <tr>
+			    <th>Title</th>
+			    <th>Speaker</th>
+			    <th>Email</th>
+		    </tr>
+	    </thead>
+
+	    <tbody>
+
+	     	{%for talk in session.talks_available.all%}
+	    	<tr>
+	    		<td>{{talk.title}}</td>
+	    		<td>{{talk.speaker_name}}</td>
+	    		<td>{{talk.speaker_email}}</td>
+	    	</tr>
+	    	{%endfor%}
+
+	    </tbody>
+	  </table>
+</div>
+{%endfor%}
+{%endblock%}
