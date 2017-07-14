@@ -33,6 +33,8 @@ Gunicorn directly from Procfile, or use the [Django documentation](
 https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/) to set up a
 WSGI-compliant webserver of your choice.
 
+For a more detailed guide to guide to getting the project running, please
+refer to the [Beginner's Guide]( BEGINNERS.md#getting-the-project-running)
 
 ## Contributing ##
 [Submit an issue](https://github.com/pyatl/podium-django/issues) or see our
