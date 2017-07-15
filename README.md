@@ -16,6 +16,7 @@ https://pyatl-podium.herokuapp.com/
 - Whitenoise 3.3.0 - Serve static files from Django on Heroku
 - dj-database-url 0.4.2 - Parse database connections from 12-factor style URLs 
 - python-dotenv 0.6.4 - Parse environment variables from .env files
+- django-crispy-forms 1.6.1
 
 NOTE:  Podium is designed to be run on Heroku but can be used on any platform
 supporting [12 Factor Apps](https://12factor.net/).

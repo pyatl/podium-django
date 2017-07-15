@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html  lang="en">
+
+	{% include "head.htm" %}
+	
+<body class="clear_top" >
+
+<header >
+
+   	{% include "nav.htm" %}
+
+
+	{% block header_content %}
+
+	{%endblock%}
+		   
+</header>
+
+	{% block content %}
+
+	{% endblock %}
+
+ </body>
+
+   	 {% include 'js.htm' %}
+
+</html>
