@@ -76,7 +76,7 @@ in whatever directory you like.
         ```
         Linux / OS X:
         source <virtualenv directory>/bin/activate
-        
+
         Windows:
         <virtualenv directory>/Scripts/activate.bat
         ```
@@ -89,7 +89,7 @@ requirements.
     ```
 - If you've installed PostgreSQL, create a database and a user. Skip this step
 you intend to use sqlite3 instead.
-    ``` 
+    ```
     # Connect to Postgres.  You may need to do this as a different user
     # on some systems.
     psql
@@ -102,17 +102,17 @@ you intend to use sqlite3 instead.
     ```
 - Copy the example.env at the project root to a new .env file.
 - Edit the .env file and fill in information for your own development environment.
+    - If using PostgreSQL, set the `DATABASE_URL`.  If using sqlite3, just
+comment out the `DATABASE_URL` variable instead.  For Postgres, the url format
+should be `postgres://username:password@hostname/database`.  So, for the
+database created above, assuming Postgres is running locally, the
+`DATABASE_URL` would be `postgres://podium_user:abc123@localhost/podium`
     - Create your own random secret key to fill in the `DJANGO_SECRET_KEY` value.
         ```
         python manage.py shell
         >>>from django.core.management.utils import get_random_secret_key
         >>>get_random_secret_key()
         ```
-    - If using PostgreSQL, set the `DATABASE_URL`.  If using sqlite3, just
-comment out the `DATABASE_URL` variable instead.  For Postgres, the url format
-should be `postgres://username:password@hostname/database`.  So, for the
-database created above, assuming Postgres is running locally, the
-`DATABASE_URL` would be `postgres://podium_user:abc123@localhost/podium`
     - Uncomment the `DJANGO_DEBUG` variable to enable Django's debugging mode,
 which is very useful for diagnosing problems while developing.
 - Migrate your database to create all the tables the project needs.
@@ -159,7 +159,7 @@ you can also work on multiple separate issues at once.
 ## Make Your Changes ##
 - Edit the code or documenation as required to implement your changes.
 - Include unit tests for any non-trivial functionality changes.
-- Make your changes in small, logically related commits.  
+- Make your changes in small, logically related commits.
 - Ensure your commit messages clearly explain the "why" of each change.
 - Format your message according to the recommended standard pattern:
     ```
