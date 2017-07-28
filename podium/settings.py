@@ -47,7 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'podium.talks',
 
+<<<<<<< HEAD
  
+=======
+    'crispy_forms',
+>>>>>>> f6afdd7f38afc2de077ec666921d8c90051396e0
 ]
 
 MIDDLEWARE = [
@@ -63,14 +67,23 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'podium.urls'
 
+<<<<<<< HEAD
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+=======
+CRISPY_TEMPLATE_PACK ='bootstrap3'
+>>>>>>> f6afdd7f38afc2de077ec666921d8c90051396e0
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
+<<<<<<< HEAD
             os.path.join(BASE_DIR, 'templates/talks'), ],
+=======
+            os.path.join(BASE_DIR, 'templates/talks'),
+            ],
+>>>>>>> f6afdd7f38afc2de077ec666921d8c90051396e0
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

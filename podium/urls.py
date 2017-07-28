@@ -20,8 +20,15 @@ from . import views
 
 urlpatterns = [
 
+<<<<<<< HEAD
     url(r'^admin/', admin.site.urls),
     url(r'^talks/', include('podium.talks.urls')),
     url(r'^', views.index, name='index'),
 
+=======
+    	url(r'^admin/', admin.site.urls),
+    	url(r'^talks/', include('podium.talks.urls')),
+    	url(r'^', views.index, name='index'),
+   
+>>>>>>> f6afdd7f38afc2de077ec666921d8c90051396e0
 ]
