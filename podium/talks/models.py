@@ -27,4 +27,6 @@ class Session(models.Model):
         blank=True, help_text='Any special theme or info about the session.')
 
     def approved_talks(self):
-        return self.talks_available.filter(status='A')
+        sets = [
+            self.talks_available.filter(status=status) for status in 'A', 'C']
+        return sets[0].union(sets[1])
