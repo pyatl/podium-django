@@ -1,6 +1,5 @@
 from django.db import models
 
-
 TALK_STATUS_CHOICES = (
     ('S', 'Submitted'),
     ('A', 'Approved'),
@@ -27,4 +26,5 @@ class Session(models.Model):
         blank=True, help_text='Any special theme or info about the session.')
 
     def approved_talks(self):
+
         return self.talks_available.filter(status='A')

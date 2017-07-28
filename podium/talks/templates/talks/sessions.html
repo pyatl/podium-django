@@ -1,35 +1,65 @@
 {% extends "base.html" %}
-{% block content%}
-{%for session in sessions%}
-<div >
-	
-	  <div><h3> Thurs. {{session.date}}</h3></div>
-	  <div >
-	    <h4>{{session.description}}</h4>
-	  </div>
 
-	  <!-- Table -->
-	  <table>
-	  <thead>
-		  <tr>
-			    <th>Title</th>
-			    <th>Speaker</th>
-			    <th>Email</th>
-		    </tr>
-	    </thead>
+{% block content %}
+<div class="container">
+		<div class="row ">
+			<div class="
+				col-xs-12 
+				col-sm-10 col-sm-push-1
+				col-md-8 col-md-push-2
+				col-lg-8 col-lg-push-2
+				" > 
+				<h2 class="bigger">Sessions</h2>
 
-	    <tbody>
+				{%for s in sessions%}
+				<div class="panel panel-default shadow ">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading"><h3> Thurs. {{s.date}}</h3></div>
+					  <div class="panel-body">
+					    <h4>{{s.description}}</h4>
+					  </div>
 
-	     	{%for talk in session.talks_available.all%}
-	    	<tr>
-	    		<td>{{talk.title}}</td>
-	    		<td>{{talk.speaker_name}}</td>
-	    		<td>{{talk.speaker_email}}</td>
-	    	</tr>
-	    	{%endfor%}
+					  <!-- Table -->
+					  <table class="table">
+					  <thead>
+						  <tr>
+							    <th>Title</th>
+							    <th>Speaker</th>
+							    <th>Email</th>
+							    {%if user.is_staff%}	
+							    <th>Status</th>
+							    {%endif%}
+						    </tr>
+					    </thead>
 
-	    </tbody>
-	  </table>
-</div>
-{%endfor%}
+					    <tbody>
+
+					     	{%for t in s.talks_available.all%}
+					    	<tr>
+					    		<td>{{t.title}}</td>
+					    		<td>{{t.speaker_name}}</td>
+					    		<td>{{t.speaker_email}}</td>
+
+<<<<<<< HEAD
+					    		{%if user.is_staff %}	
+=======
+					    		{%if user.is_staff%}	
+>>>>>>> f6afdd7f38afc2de077ec666921d8c90051396e0
+					    		<td>{{t.status}}</td>
+					    		{%endif%}
+					    	</tr>
+					    	{%endfor%}
+
+					    </tbody>
+					  </table>
+				</div>
+				{%endfor%}
+				<div class="panel panel-default shadow">
+				<div class="panel-body">
+					PyAtl JamSession 2017
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {%endblock%}
