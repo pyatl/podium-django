@@ -28,5 +28,5 @@ class Session(models.Model):
 
     def approved_talks(self):
         sets = [
-            self.talks_available.filter(status=status) for status in 'A', 'C']
+            self.talks_available.filter(status=status) for status in ('A', 'C')]
         return sets[0].union(sets[1])
