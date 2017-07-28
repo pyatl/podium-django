@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^talks/', include('podium.talks.urls')),
     url(r'^', views.index, name='index'),
 
+
 ]
