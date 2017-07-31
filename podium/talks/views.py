@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
 from .forms import TalkSubmissionForm
 from .models import Session
@@ -26,5 +26,6 @@ def session_list_view(request):
     return render(request, 'talks/sessions.html', context)
 
 
-def session_talk_list_view(request):
-    pass
+def session_talk_list_view(request, id):
+    raise Http404(
+        'This view is not implemented. Please tell the Podium maintainers to fix this.')

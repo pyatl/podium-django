@@ -2,8 +2,8 @@
 {% block content%}
 {%for session in sessions%}
 <div >
-	
-	  <div><h3> Thurs. {{session.date}}</h3></div>
+
+	  <div><h3><a href={{session.get_absolute_url}}>{{session.date}}</a></h3></div>
 	  <div >
 	    <h4>{{session.description}}</h4>
 	  </div>

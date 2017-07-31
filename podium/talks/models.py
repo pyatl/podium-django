@@ -31,3 +31,6 @@ class Session(models.Model):
             self.talks_available.filter(status=status) for status in ('A', 'C')
         ]
         return sets[0].union(sets[1])
+
+    def get_absolute_url(self):
+        return f'/talks/sessions/{self.id}/'
