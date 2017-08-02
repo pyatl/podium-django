@@ -1,0 +1,26 @@
+<div >
+  <h4>{{session.description}}</h4>
+</div>
+
+<!-- Table -->
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Speaker</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    {%for talk in talks%}
+    <tr>
+      <td>{{talk.title}}</td>
+      <td>{{talk.speaker_name}}</td>
+      <td>{{talk.speaker_email}}</td>
+    </tr>
+    {%endfor%}
+
+  </tbody>
+</table>

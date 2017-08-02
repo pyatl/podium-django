@@ -32,4 +32,7 @@ def session_talk_list_view(request, id):
         session = Session.objects.get(id=id)
     except Session.DoesNotExist:
         raise Http404(f'Session {id} does not exist')
-    # We still have to render this.
+    return render(request, 'talks/session-detail.html', {
+        'session': session,
+        'talks': session.talks_available.all(),
+    })
