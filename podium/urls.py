@@ -22,5 +22,5 @@ from .talks import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^talks/', include('podium.talks.urls')),
-    url(r'^$', views.session_list_view),
+    url(r'^', include('podium.talks.urls')),
 ]
