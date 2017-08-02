@@ -20,6 +20,9 @@ class Talk(models.Model):
         max_length=1, choices=TALK_STATUS_CHOICES,
         default='S')
 
+    def get_absolute_url(self):
+        return f'/talks/talks/{self.id}/'
+
 
 class Session(models.Model):
     date = models.DateField()

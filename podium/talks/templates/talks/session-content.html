@@ -16,7 +16,7 @@
 
     {%for talk in talks%}
     <tr>
-      <td>{{talk.title}}</td>
+      <td><a href={{talk.get_absolute_url}}>{{talk.title}}</a></td>
       <td>{{talk.speaker_name}}</td>
       <td>{{talk.speaker_email}}</td>
     </tr>
