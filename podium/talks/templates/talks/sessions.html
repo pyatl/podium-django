@@ -25,8 +25,8 @@
 						  <tr>
 							    <th>Title</th>
 							    <th>Speaker</th>
-							    <th>Email</th>
 							    {%if user.is_staff%}	
+							    <th>Email</th>
 							    <th>Status</th>
 							    {%endif%}
 						    </tr>
@@ -38,9 +38,8 @@
 					    	<tr>
 					    		<td>{{t.title}}</td>
 					    		<td>{{t.speaker_name}}</td>
-					    		<td>{{t.speaker_email}}</td>
-
 					    		{%if user.is_staff %}	
+					    		<td>{{t.speaker_email}}</td>
 					    		<td>{{t.status}}</td>
 					    		{%endif%}
 					    	</tr>
