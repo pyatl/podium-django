@@ -22,6 +22,6 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
     url(r'^talks/', include('podium.talks.urls')),
-    url(r'^', views.index, name='index'),
+    url(r'^$', views.index, name='index'),
 
 ]
