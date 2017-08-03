@@ -36,17 +36,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Project apps
+    'podium.talks',
 
-    'crispy_forms',
-
+    # Django built-in apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'podium.talks',
-
+    # Third party apps
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
