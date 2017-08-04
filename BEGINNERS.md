@@ -107,7 +107,8 @@ comment out the `DATABASE_URL` variable instead.  For Postgres, the url format
 should be `postgres://username:password@hostname/database`.  So, for the
 database created above, assuming Postgres is running locally, the
 `DATABASE_URL` would be `postgres://podium_user:abc123@localhost/podium`
-    - Create your own random secret key to fill in the `DJANGO_SECRET_KEY` value.
+   	- Create a .env file and set anything for `DJANGO_SECRET_KEY`
+	 - Create your own random secret key to fill in the `DJANGO_SECRET_KEY` value.
         ```
         python manage.py shell
         >>>from django.core.management.utils import get_random_secret_key
