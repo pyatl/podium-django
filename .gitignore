@@ -8,3 +8,6 @@
 *.swp
 .env
 podium/bin
+podium/lib
+podium/pip-selfcheck.json
+podium/pyvenv.cfg
