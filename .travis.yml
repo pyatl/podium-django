@@ -1,0 +1,7 @@
+language: python
+python: "3.6"
+dist: xenial
+os: linux
+
+install: "pip install -r requirments.txt && pip install flake8"
+script: lint.sh
