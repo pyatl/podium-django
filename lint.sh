@@ -6,6 +6,7 @@ log_message() {
 }
 
 lint() {
+    rm lint/results.txt
     flake8 --output-file=lint/results.txt --config=lint/flake8
     STATUS=${?}
 
