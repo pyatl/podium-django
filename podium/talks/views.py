@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse_lazy
 from .forms import TalkSubmissionForm
@@ -30,10 +30,7 @@ def session_list_view(request):
 
 
 def session_talk_list_view(request, id):
-    try:
-        session = Session.objects.get(id=id)
-    except Session.DoesNotExist:
-        raise Http404(f'Session {id} does not exist')
+    session = get_object_or_404(Session, id=id)
     return render(request, 'talks/session-detail.html', {
         'session': session,
         'talks': session.talks_available.all(),
