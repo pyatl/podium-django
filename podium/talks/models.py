@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 TALK_STATUS_CHOICES = (
     ('S', 'Submitted'),
@@ -20,7 +21,7 @@ class Talk(models.Model):
         default='S')
 
     def get_absolute_url(self):
-        return f'/talks/talks/{self.id}/'
+        return reverse('talks-talks-id', args=[self.id])
 
     def __str__(self):
         return self.speaker_name
@@ -42,4 +43,4 @@ class Session(models.Model):
         return sets[0].union(sets[1])
 
     def get_absolute_url(self):
-        return f'/talks/sessions/{self.id}/'
+        return reverse('talks-sessions-id', args=[self.id])
