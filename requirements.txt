@@ -4,3 +4,4 @@ gunicorn==19.7.1
 psycopg2==2.7.1
 python-dotenv==0.6.4
 whitenoise==3.3.0
+django-crispy-forms==1.6.1

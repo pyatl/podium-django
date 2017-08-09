@@ -26,6 +26,11 @@ class SessionTestCase(TestCase):
         self.assertEqual(
             Session.objects.get(id=1).get_absolute_url(), '/talks/sessions/1/')
 
+    def test_id(self):
+        """A saved Session object has an id."""
+        Session(date=date(2020, 1, 1)).save()
+        self.assertTrue(hasattr(Session.objects.all()[0], 'id'))
+
     # View
 
     def test_session_talk_list_view(self):

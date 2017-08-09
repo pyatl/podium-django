@@ -1,24 +1,30 @@
-<div >
-  <h4>{{session.description}}</h4>
+<div class="panel-body">
+  <h4>{{s.description}}</h4>
 </div>
 
 <!-- Table -->
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
       <th>Speaker</th>
+      {%if user.is_staff%}
       <th>Email</th>
+      <th>Status</th>
+      {%endif%}
     </tr>
   </thead>
 
   <tbody>
 
-    {%for talk in talks%}
+    {%for t in talks%}
     <tr>
-      <td><a href={{talk.get_absolute_url}}>{{talk.title}}</a></td>
-      <td>{{talk.speaker_name}}</td>
-      <td>{{talk.speaker_email}}</td>
+      <td><a href={{t.get_absolute_url}}>{{t.title}}</a></td>
+      <td>{{t.speaker_name}}</td>
+      {%if user.is_staff %}
+      <td>{{t.speaker_email}}</td>
+      <td>{{t.status}}</td>
+      {%endif%}
     </tr>
     {%endfor%}
 

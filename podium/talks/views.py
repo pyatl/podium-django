@@ -23,6 +23,8 @@ def talk_detail_view(request, talk_id):
 
 def session_list_view(request):
     sessions = Session.objects.all()
+    # sessions = [s.filter(status='A') for s in sessions]
+    print(sessions)
     context = {'sessions': sessions}
     return render(request, 'talks/sessions.html', context)
 

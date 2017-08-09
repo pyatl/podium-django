@@ -1,6 +1,5 @@
 from django.db import models
 
-
 TALK_STATUS_CHOICES = (
     ('S', 'Submitted'),
     ('A', 'Approved'),
@@ -23,11 +22,18 @@ class Talk(models.Model):
     def get_absolute_url(self):
         return f'/talks/talks/{self.id}/'
 
+    def __str__(self):
+        return self.speaker_name
+
 
 class Session(models.Model):
     date = models.DateField()
     description = models.TextField(
         blank=True, help_text='Any special theme or info about the session.')
+
+    def __str__(self):
+
+        return '{} - {} '.format(self.date, self.description)
 
     def approved_talks(self):
         sets = [
