@@ -1,0 +1,32 @@
+<div class="panel-body">
+  <h4>{{s.description}}</h4>
+</div>
+
+<!-- Table -->
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Speaker</th>
+      {%if user.is_staff%}
+      <th>Email</th>
+      <th>Status</th>
+      {%endif%}
+    </tr>
+  </thead>
+
+  <tbody>
+
+    {%for t in talks%}
+    <tr>
+      <td><a href={{t.get_absolute_url}}>{{t.title}}</a></td>
+      <td>{{t.speaker_name}}</td>
+      {%if user.is_staff %}
+      <td>{{t.speaker_email}}</td>
+      <td>{{t.status}}</td>
+      {%endif%}
+    </tr>
+    {%endfor%}
+
+  </tbody>
+</table>
