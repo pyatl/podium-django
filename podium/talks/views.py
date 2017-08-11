@@ -4,6 +4,9 @@ from django.urls import reverse_lazy
 from .forms import TalkSubmissionForm
 from .models import Session
 
+NOT_IMPLEMENTED_MSG = 'This view is not implemented. Please tell the Podium ' \
+                      'maintainers to fix this.'
+
 
 def submit_talk_view(request):
     form = TalkSubmissionForm(request.POST or None)
@@ -17,8 +20,7 @@ def submit_talk_view(request):
 
 
 def talk_detail_view(request, talk_id):
-    raise Http404(
-        'This view is not implemented. Please tell the Podium maintainers to fix this.')
+    raise Http404(NOT_IMPLEMENTED_MSG)
 
 
 def session_list_view(request):
