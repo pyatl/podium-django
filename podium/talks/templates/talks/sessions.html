@@ -2,55 +2,24 @@
 
 {% block content %}
 <div class="container">
-		<div class="row ">
-			<div class="
-				col-xs-12 
-				col-sm-10 col-sm-push-1
-				col-md-8 col-md-push-2
-				col-lg-8 col-lg-push-2
-				" > 
-				<h2 class="bigger">Sessions</h2>
+  <div class="row ">
+    <div class="
+		col-xs-12
+		col-sm-10 col-sm-push-1
+		col-md-8 col-md-push-2
+		col-lg-8 col-lg-push-2
+		" >
+      <h2 class="bigger">Sessions</h2>
 
-				{%for s in sessions%}
-				<div class="panel panel-default shadow ">
-					  <!-- Default panel contents -->
-					  <div class="panel-heading"><h3> Thurs. {{s.date}}</h3></div>
-					  <div class="panel-body">
-					    <h4>{{s.description}}</h4>
-					  </div>
-
-					  <!-- Table -->
-					  <table class="table">
-					  <thead>
-						  <tr>
-							    <th>Title</th>
-							    <th>Speaker</th>
-							    {%if user.is_staff%}	
-							    <th>Email</th>
-							    <th>Status</th>
-							    {%endif%}
-						    </tr>
-					    </thead>
-
-					    <tbody>
-
-					     	{%for t in s.talks_available.all%}
-					    	<tr>
-					    		<td>{{t.title}}</td>
-					    		<td>{{t.speaker_name}}</td>
-					    		{%if user.is_staff %}	
-					    		<td>{{t.speaker_email}}</td>
-					    		<td>{{t.status}}</td>
-					    		{%endif%}
-					    	</tr>
-					    	{%endfor%}
-
-					    </tbody>
-					  </table>
-				</div>
-				{%endfor%}
-				{% include 'footer.html'%}
-			</div>
-		</div>
-	</div>
+      {%for s in sessions%}
+      <div class="panel panel-default shadow ">
+	<!-- Default panel contents -->
+	<div class="panel-heading"><h3><a href={{s.get_absolute_url}}> Thurs. {{s.date}}</a></h3></div>
+	{% include "talks/session-content.html" with talks=s.talks_available.all %}
+      </div>
+      {%endfor%}
+      {% include 'footer.html'%}
+    </div>
+  </div>
+</div>
 {%endblock%}
