@@ -1,5 +1,7 @@
 # Podium #
 
+[![Build Status](https://travis-ci.org/pyatl/podium-django.svg?branch=master)](https://travis-ci.org/pyatl/podium-django)
+
 Podium is an application for booking and scheduling talks for meetups.  This
 app is being maintained by Python Atlanta Jam Session members to help schedule
  talks for our Python Atlanta meetups.
