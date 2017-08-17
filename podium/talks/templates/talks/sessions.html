@@ -12,7 +12,7 @@
       <h2 class="bigger">Sessions</h2>
 
       {%for s in sessions%}
-      <div class="panel panel-default shadow ">
+      <div class="panel panel-default shadow">
 	<!-- Default panel contents -->
 	<div class="panel-heading"><h3><a href={{s.get_absolute_url}}> Thurs. {{s.date}}</a></h3></div>
 	{% include "talks/session-content.html" with talks=s.talks_available.all %}

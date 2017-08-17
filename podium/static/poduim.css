@@ -1,5 +1,11 @@
-<style type="text/css">
-	@import url('https://fonts.googleapis.com/css?family=Days+One|Jura|Marck+Script|Questrialv|Tangerine');
+@import url('https://fonts.googleapis.com/css?family=Jura|Questrial');
+
+	*{
+		margin:0;
+		padding: 0;
+		border:0;
+
+	}
 
 	body, 
 	.navbar-default .navbar-brand,
@@ -7,11 +13,32 @@
 	.dropdown-menu>li>a:focus, 
 	.dropdown-menu>li>a:hover{
 		color:#005580;
-		background-color: #fff;
+		background: transparent;
 		text-shadow: 2px 2px 10px #669996;
 		border:none;
+		outline: none;
+
 	}
-	.panel-default > .panel-heading {
+	.icon-bar{
+		height: 1px;
+		color: #005580;
+	}
+	.navbar-default .navbar-toggle,
+	.navbar-default .navbar-toggle:hover,
+	.navbar-default .navbar-toggle:visited{
+		color: #005580;
+		background-color: transparent;
+		border: none;
+	}
+	.navbar-default{
+		border-color: transparent;
+	}
+	.navbar-default, .navbar-form{
+		box-shadow: none;
+		border-color: transparent;
+		background-color: transparent;
+	}
+	.panel-default .panel-heading {
 		background: #ddd;
 		font-family: 'Questrial', sans-serif;
 
@@ -20,7 +47,6 @@
 	 	color:#fff;
 		background-color: #005580;
 		border: none;
-		/*font-family: 'Jura', sans-serif;*/
 
 	 }
 	a.list-group-item{
@@ -41,7 +67,7 @@
 	}
 
 	.form-control{
-		box-shadow: 2px 5px 15px #999;
+		box-shadow: 1px 1.5px 15px #999;
 		color:#005580;
 		font-style: italic;
 		font-weight: bold;
@@ -52,13 +78,43 @@
 	#details_p{
 		font-size: 17px;
 	}
+	#details_button>a{
+		color: #fff;
+	}
 	#details_button{
 		float: right;
 	}
 
+	/*NAVBAR UNDERLINE*/
+	.navbar-default .navbar-nav > li > a{
+		position: relative;
+		color: #005580;
+		font-family: 'Jura', sans-serif;
+		text-decoration: none;
+	}
+	.navbar-default .navbar-nav > li > a:after{
+		content: "";
+		position: absolute;
+		bottom:10px;
+		background: #669996;
+		left: 0;
+		width:0;
+		height: 1px;
+		transform: scaleX(0);
+		transition: all 0.6s;
+	}
+	.navbar-default .navbar-nav > li > a:hover,
+	.navbar-default .navbar-nav > li > a:hover:after{
+		width: 100%;
+		transform: scaleX(1);
+   	
+	}
+	/*END UNDERLINE*/
+
+
 	a:hover { 
 		text-shadow: 2px 2px 10px #669996;
-		color: #fff;
+		color: #669996;
 	}
 	a:link, a:visited { 
 		
@@ -66,7 +122,6 @@
 		cursor: pointer;
 	}    
 	#details_button>a:link, a:visited { 
-		color: #fff;
 		text-decoration: none;
 		cursor: pointer;
 	}
@@ -77,8 +132,9 @@
 		font-weight: bold;
 	}
 	.shadow{
-		box-shadow: 2px 5px 15px #999;
+		box-shadow: 2px 2px 7px #999;
 	}
+
 	/* Carousel base class */
 	#myCarousel{
 		 border-radius: 6px;
@@ -112,6 +168,3 @@
 	  height: 350px;
 	}
 
-
-
-</style>
