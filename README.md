@@ -18,7 +18,8 @@ https://pyatl-podium.herokuapp.com/
 - Whitenoise 3.3.0 - Serve static files from Django on Heroku
 - dj-database-url 0.4.2 - Parse database connections from 12-factor style URLs 
 - python-dotenv 0.6.4 - Parse environment variables from .env files
-- django-crispy-forms 1.6.1- Add bootstrap3 input styling to forms.
+- django-crispy-forms 1.6.1- Adds bootstrap3 input styling to forms.
+- django-registration-redux 1.7 - User registration.
 
 NOTE:  Podium is designed to be run on Heroku but can be used on any platform
 supporting [12 Factor Apps](https://12factor.net/).
@@ -36,7 +37,7 @@ Gunicorn directly from Procfile, or use the [Django documentation](
 https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/) to set up a
 WSGI-compliant webserver of your choice.
 
-For a more detailed guide to guide to getting the project running, please
+For a more detailed guide to getting the project running, please
 refer to the [Beginner's Guide]( BEGINNERS.md#getting-the-project-running)
 
 ## Contributing ##
