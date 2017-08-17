@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 {% block content%}
-<div><h3>{{session.date}}</h3></div>
-{% include "talks/session-content.html" %}
+<div class="container">
+  	<div class="row ">
+    		<div class="
+		col-xs-12
+		col-sm-10 col-sm-push-1
+		col-md-8 col-md-push-2
+		col-lg-8 col-lg-push-2
+		" >
+
+		<div><h3>{{session.date}}</h3></div>
+		{% include "talks/session-content.html" %}
+
+		</div>
+	</div>
+</div>
 {% endblock %}

@@ -28,6 +28,7 @@
       <ul class="nav navbar-nav">
         <!-- <li ><a href="{%url 'index'%}">Home <span class="sr-only">(current)</span></a></li> -->
         <li><a href="{%url 'talks-sessions'%}">Sessions</a></li>
+        <li><a href="{%url 'talks-submit'%}">Submit Talk Proposal</a></li>
 
         <!-- ADMIN LINK-->
         {%if request.user.is_authenticated and request.user.is_staff %}

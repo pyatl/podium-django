@@ -13,7 +13,7 @@
 	.dropdown-menu>li>a:focus, 
 	.dropdown-menu>li>a:hover{
 		color:#005580;
-		background: transparent;
+		background: #fff;
 		text-shadow: 2px 2px 10px #669996;
 		border:none;
 		outline: none;

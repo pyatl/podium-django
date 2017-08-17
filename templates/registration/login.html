@@ -18,7 +18,7 @@
                 <form method="post" action="">
                     {% csrf_token %}
                    {{ form | crispy }}
-                    <input type="submit" value="{% trans 'Log in' %}" />
+                    <input class="btn btn-primary btn-xs" type="submit" value="{% trans 'Log in' %}" />
                     <input type="hidden" name="next" value="{{ next }}" />
                 </form>
                 <p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
