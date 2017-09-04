@@ -178,11 +178,9 @@ you can also work on multiple separate issues at once.
 ## Validate and Test Your Changes ##
 Once you're satisfied with your commits, you should always verify that your
 changes haven't broken existing features or introduced any new bugs.
-- Run the automated test suite with `python manage.py test` from the project
-root.
-- Run a linter like [pycodestyle](
-https://pycodestyle.readthedocs.io/en/latest/) to check that your code meets
-PEP8 style guidelines.
+- Go to the project root and run the automated test suite with
+`python manage.py test`.
+- Run `./lint.sh` to check that your code meets PEP8 style guidelines.
 - Manually run the project and test that your changes are running and your
 feature is available and working properly, or that the bugfix you added fully
 corrects the bug.
