@@ -37,10 +37,7 @@ class Session(models.Model):
         return '{} - {} '.format(self.date, self.description)
 
     def approved_talks(self):
-        sets = [
-            self.talks_available.filter(status=status) for status in ('A', 'C')
-        ]
-        return sets[0].union(sets[1])
+        return self.talks_available.filter(status__in=('A', 'C'))
 
     def get_absolute_url(self):
         return reverse('talks-sessions-id', args=[self.id])
