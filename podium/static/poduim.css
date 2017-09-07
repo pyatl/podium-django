@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css?family=Jura|Questrial');
+
+*{
+	margin:0;
+	padding: 0;
+	border:0;
+}
+
+body, 
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a,
+.dropdown-menu>li>a:focus, 
+.dropdown-menu>li>a:hover{
+	color:#005580;
+	background: transparent;
+	text-shadow: 2px 2px 10px #669996;
+	border:none;
+	outline: none;
+}
+
+.icon-bar{
+	height: 1px;
+	color: #005580;
+}
+
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:visited{
+	color: #005580;
+	background-color: transparent;
+	border: none;
+}
+
+.navbar-default{
+	border-color: transparent;
+}
+
+.navbar-default, .navbar-form{
+	box-shadow: none;
+	border-color: transparent;
+	background-color: transparent;
+}
+
+.panel-default .panel-heading {
+	background: #ddd;
+	font-family: 'Questrial', sans-serif;
+}
+
+.list-group-item{
+ 	color:#fff;
+	background-color: #005580;
+	border: none;
+ }
+
+a.list-group-item{
+ 	color:#fff;
+	background-color: #005580;
+ }
+
+ a.list-group-item:hover{
+ 	color:#fff;
+	background-color: #005580;
+
+ }
+
+ a.list-group-item .list-group-item-heading{
+ 	color:#fff;
+ }
+
+.clear_top{
+	margin-top: 10%;
+}
+
+.form-control{
+	box-shadow: 1px 1.5px 15px #999;
+	color:#005580;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.centrd{
+	text-align: center;
+}
+
+#details_p{
+	font-size: 17px;
+}
+
+#details_button>a{
+	color: #fff;
+}
+
+#details_button{
+	float: right;
+}
+
+/*NAVBAR UNDERLINE*/
+.navbar-default .navbar-nav > li > a{
+	position: relative;
+	color: #005580;
+	font-family: 'Jura', sans-serif;
+	text-decoration: none;
+}
+
+.navbar-default .navbar-nav > li > a:after{
+	content: "";
+	position: absolute;
+	bottom:10px;
+	background: #669996;
+	left: 0;
+	width:0;
+	height: 1px;
+	transform: scaleX(0);
+	transition: all 0.6s;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:hover:after{
+	width: 100%;
+	transform: scaleX(1);
+ 	
+}
+
+/*END UNDERLINE*/
+
+
+a:hover { 
+	text-shadow: 2px 2px 10px #669996;
+	color: #669996;
+}
+
+a:link, a:visited { 
+	
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#details_button>a:link, a:visited { 
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.bigger{
+	color:#005580;
+	/*font-size: 40px;*/
+	font-style: italic;
+	font-weight: bold;
+}
+
+.shadow{
+	box-shadow: 2px 2px 7px #999;
+}
+
+/* Carousel base class */
+
+#myCarousel{
+	 border-radius: 6px;
+}
+
+.carousel {
+  height: 350px;
+  margin-bottom: 60px;
+ 
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+  height: 350px;
+  color: #fff;
+  text-shadow: 2px 2px 10px #ddd;
+
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 350px;
+  background-color: #005580;
+
+}
+
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 350px;
+}
+
