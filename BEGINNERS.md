@@ -195,8 +195,15 @@ repository to make your changes merge in more cleanly.
     git checkout master
     git pull --rebase upstream master
     git checkout feature_XYZ
-    git rebase master
+    git rebase --interactive master
     ```
+- At this point, your editor will pop up showing a list of your commits with the
+word `pick` at the beginning of each line. If any of those commits represent
+minor changes like typo fixes, change the word `pick` for those commits to
+`squash`. This will combine that commit into the previous commit. This helps
+ensure that every commit in the master branch will represent a significant
+change, which can be helpful for locating bugs in the future.
+
     NOTE: When you rebase from master, it's possible you might have a conflict
     with a change someone else made. Follow the guidelines [here](
     https://help.github.com/articles/resolving-merge-conflicts-after-a-git-rebase/) if you need
