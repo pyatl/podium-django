@@ -97,6 +97,8 @@ you intend to use sqlite3 instead.
     CREATE DATABASE podium;
     # Create a user
     CREATE USER podium_user WITH PASSWORD 'abc123';
+    # Add user permissions so django can create a database when running tests
+    ALTER USER podium_user CREATEDB;
     # Disconnect from Postgres
     \q
     ```
