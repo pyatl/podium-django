@@ -21,7 +21,7 @@ class Talk(models.Model):
         default='S')
 
     def get_absolute_url(self):
-        return reverse('talks-talks-id', args=[self.id])
+        return reverse('talks-talk-id', args=[self.id])
 
     def __str__(self):
         return self.speaker_name
