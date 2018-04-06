@@ -1,94 +1,91 @@
-<nav class="navbar navbar-default navbar-fixed-top"><!-- NAV-TYPE -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <!-- NAV-TYPE -->
 
-    <div class="container-fluid"><!-- CONTAINER -->
+    <div class="container-fluid">
+        <!-- CONTAINER -->
 
-    <!-- BRAND/MOBILE MENU  -->
-    <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- BRAND/MOBILE MENU  -->
+        <!-- Brand and toggle get grouped for better mobile display -->
 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
 
-      <!-- LEFT CORNER BRAND ICON/TEXT -->
+            <!-- LEFT CORNER BRAND ICON/TEXT -->
 
-      <a class="navbar-brand" href="{%url 'index'%}">PYAtl Podium</a>
-    </div> 
+            <a class="navbar-brand" href="{%url 'index'%}">PYAtl Podium</a>
+        </div>
 
-    <!-- END BRAND/MOBILE MENU -->
+        <!-- END BRAND/MOBILE MENU -->
 
-    <!-- NAVBAR BODY -->
-    <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- NAVBAR BODY -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <ul class="nav navbar-nav">
-        <!-- <li ><a href="{%url 'index'%}">Home <span class="sr-only">(current)</span></a></li> -->
-        <li><a href="{%url 'talks-sessions'%}">Sessions</a></li>
-        <li><a href="{%url 'talks-submit'%}">Submit Talk Proposal</a></li>
-        <!-- ADMIN LINK-->
-        {%if request.user.is_authenticated and request.user.is_staff %}
-          <li><a href="{%url 'admin:index'%}"><i class="fa fa-users"></i> Admin</a></li>
-        {%endif%}   
-      </ul>
+            <ul class="nav navbar-nav">
+                <!-- <li ><a href="{%url 'index'%}">Home <span class="sr-only">(current)</span></a></li> -->
+                <li><a href="{%url 'talks-sessions'%}">Sessions</a></li>
+                <li><a href="{%url 'talk-list'%}">Talks</a></li>
+                <li><a href="{%url 'talks-submit'%}">Submit Talk Proposal</a></li>
+                <!-- ADMIN LINK-->
+                {%if request.user.is_authenticated and request.user.is_staff %}
+                <li><a href="{%url 'admin:index'%}"><i class="fa fa-users"></i> Admin</a></li>
+                {%endif%}
+            </ul>
 
-      <!-- RIGHT SIDE NAVBAR -->
-      <ul class="nav navbar-nav navbar-right">
+            <!-- RIGHT SIDE NAVBAR -->
+            <ul class="nav navbar-nav navbar-right">
 
-        <!-- LOGIN/LOGOUT -->
-        {% if request.user.is_authenticated %}
-            <li>
-            <a href='{% url "auth_logout" %}'>
-            <i class="fa fa-user"></i>
-            &nbsp;{{user}}&nbsp;Logout&nbsp;
-            <i class="fa fa-sign-out"></i>
-            </a>
-            </li>
+                <!-- LOGIN/LOGOUT -->
+                {% if request.user.is_authenticated %}
+                <li>
+                    <a href='{% url "auth_logout" %}'>
+                        <i class="fa fa-user"></i> &nbsp;{{user}}&nbsp;Logout&nbsp;
+                        <i class="fa fa-sign-out"></i>
+                    </a>
+                </li>
 
-        {% else %}
-              {%if "/accounts/register" not in request.get_full_path %}
+                {% else %} {%if "/accounts/register" not in request.get_full_path %}
                 <li class=""><a href="{% url 'registration_register' %}"><i class="fa fa-user-plus"></i> 
                 Register<span class="sr-only">(current)</span></a></li>
-          
-              {% endif %}
-        {% endif %}
 
-        {% if not request.user.is_authenticated and "/accounts/login" not in request.get_full_path %}
-        {% if not request.user.is_authenticated and "/accounts/register" not in request.get_full_path %}
-            <form class="navbar-form navbar-right " method="POST" action="{% url 'auth_login'%}">
-            {%csrf_token%}
-            
-            <div class="form-group">
+                {% endif %} {% endif %} {% if not request.user.is_authenticated and "/accounts/login" not in request.get_full_path %} {% if not request.user.is_authenticated and "/accounts/register" not in request.get_full_path %}
+                <form class="navbar-form navbar-right " method="POST" action="{% url 'auth_login'%}">
+                    {%csrf_token%}
 
-              <input type="username" class="form-control input-sm" name="username" placeholder='Username'/>
-            </div>
+                    <div class="form-group">
 
-            <div class="form-group">
-              <input type="password" class="form-control input-sm" name="password" placeholder='Password'/>
+                        <input type="username" class="form-control input-sm" name="username" placeholder='Username' />
+                    </div>
 
-              <button class="btn btn-primary btn-xs" type="submit">Login <i class="fa fa-sign-in"></i></button>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-sm" name="password" placeholder='Password' />
 
-            </div>
-            
-            </form>
-        {%endif%}
-        {%endif%}
+                        <button class="btn btn-primary btn-xs" type="submit">Login <i class="fa fa-sign-in"></i></button>
 
-            <!-- END LOGIN/LOGOUT -->
+                    </div>
 
-      </ul>
-      <!-- END RIGHT SIDE NAVBAR -->
+                </form>
+                {%endif%} {%endif%}
 
-    </div><!-- /.navbar-collapse -->
+                <!-- END LOGIN/LOGOUT -->
 
-    <!-- END NAV-BODY -->
+            </ul>
+            <!-- END RIGHT SIDE NAVBAR -->
 
-  </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.navbar-collapse -->
 
-  <!-- END CONTAINER -->
+        <!-- END NAV-BODY -->
+
+    </div>
+    <!-- /.container-fluid -->
+
+    <!-- END CONTAINER -->
 
 </nav>
-  
