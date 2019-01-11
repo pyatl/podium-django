@@ -36,6 +36,13 @@ ALLOWED_HOSTS = [
     '.herokuapp.com',
 ]
 
+# SSL / Security settings
+DISABLE_SSL = os.environ.get('DJANGO_DISABLE_SSL', False)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = not DISABLE_SSL
+SESSION_COOKIE_SECURE = not DISABLE_SSL
+CSRF_COOKIE_SECURE = not DISABLE_SSL
+
 
 # Application definition
 
