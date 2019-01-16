@@ -19,8 +19,8 @@ def submit_talk_view(request):
     })
 
 
-def talk_detail_view(request, talk_id):
-    talk = get_object_or_404(Talk, id=talk_id)
+def talk_detail_view(request, slug):
+    talk = get_object_or_404(Talk, slug=slug)
     context = {
         'talk': talk,
     }
@@ -41,8 +41,8 @@ def session_list_view(request):
     return render(request, 'talks/sessions.html', context)
 
 
-def session_talk_list_view(request, id):
-    session = get_object_or_404(Session, id=id)
+def session_talk_list_view(request, date):
+    session = get_object_or_404(Session, date=date)
     return render(request, 'talks/session-detail.html', {
         'session': session,
         'talks': session.talks_available.all(),
