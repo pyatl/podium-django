@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block twitter_card_title %}PyATL Python Atlanta Programmers{% endblock %}
+{% block twitter_card_description %}PyATL's official webapp{% endblock %}
+
+
+{% block page_title %}PyATL Python Atlanta Programmers{% endblock %}
+
+{% block body %}
+<section class="jumbotron text-left">
+    <div class="container">
+      <h1 class="jumbotron-heading">Atlanta Python Programmers</h1>
+      <p class="lead">PyAtl is a group of technologists that meets every month in Atlanta for presentations and discussion about Python, the powerful and easy-to-use programming language.</p>
+    </div>
+  </section>
+
+
+
+
+  {% if events %}
+  <div class="py-1">
+    <div class="container">
+	<div class="row">
+		<div class="col-md-4 mb-3">
+			<h2>Upcoming Events</h2>
+		</div>
+	</div>
+      
+    <div class="row">
+        
+        {% for event in events %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                  <p class="date">{{ event.date }}</p>
+                  <h5 class="card-title">{{ event.name }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Location: <a href="{% url 'location' slug=event.location.slug pk=event.location.pk %}">{{ event.location.name }}</a></h6>
+                <p class="card-text">{{ event.short_description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a type="button" href="{% url 'event' date=event.slugify_date slug=event.slug pk=event.pk %}" class="btn btn-sm btn-outline-secondary">Learn More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+          <a href="{% url 'events' %}"><h4>Browse All Events</h4></a>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-4 mb-3">
+            <a href="{% url 'locations' %}"><h4>Browse All Locations</h4></a>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  {% endif %}
+
+  {% endblock %}

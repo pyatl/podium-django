@@ -49,6 +49,7 @@ CSRF_COOKIE_SECURE = not DISABLE_SSL
 INSTALLED_APPS = [
     # Project apps
     'podium.talks',
+    'pyatl',
 
     # Django built-in apps
     'django.contrib.admin',
@@ -61,6 +62,7 @@ INSTALLED_APPS = [
     # Third party apps
     'registration',
     'crispy_forms',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -174,3 +176,7 @@ REGISTRATION_OPEN = True
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/talks/sessions/'
+
+# TinyMCE
+
+TINYMCE_DEFAULT_CONFIG = {'theme': 'advanced',}

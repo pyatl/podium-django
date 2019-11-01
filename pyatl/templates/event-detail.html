@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block twitter_card_title %}{{ event.date }} {{ event.name }}{% endblock %}
+{% block twitter_card_description %}{{ event.short_description }}{% endblock %}
+{% block page_title %}{{ event.date }} {{ event.name }}{% endblock %}
+
+
+{% block body %} 
+
+<div class="py-5">
+    <div class="container">
+        
+            <div class="row">
+                    <div class="col-md-8 mb-2">
+                        <p class="date">{{ event.date }}</p>
+                    </div>
+            </div>
+        
+        <div class="row">
+                <div class="col-md-8 mb-2">
+                    <h3>{{ event.name }}</h3>
+                    <p><a href="{% url 'event-invite' pk=event.pk %}">Add to calendar</a></p>
+                </div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-8">
+                    <p>{{ event.description|safe }}</p>
+                </div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-8">
+                    <p><a href="{% url 'location' slug=event.location.slug pk=event.location.pk %}">Location: {{ event.location.name }}</a></p>
+                    {{ event.location.map_embed_code|safe }}
+                </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

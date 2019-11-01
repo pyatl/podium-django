@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block twitter_card_title %}PyATL Events List {% endblock %}
+{% block twitter_card_description %}List of PyATL events.{% endblock %}
+{% block page_title %}PyATL Events{% endblock %}
+
+{% block body %} 
+
+<div class="py-5">
+    <div class="container">
+            <div class="row">
+                <div class="col-md-8 mt-5 mb-5">
+                    <p>PyATL holds different types of events. We have events where we follow the standard talks format of your typical meetup. There also events that are coding sessions for beginners, intermediates, experts.</p>
+
+                </div>
+
+            </div>
+            {% for event in events %}
+        
+            <div class="row">
+                    <div class="col-md-8 mb-2">
+                        <h6><span class="date">{{ event.date }}</span><a href="{% url 'event' date=event.slugify_date slug=event.slug pk=event.pk %}"> - {{event.name}}</a></h6>
+                    </div>
+            </div>
+
+            {% endfor %}
+        
+ 
+
+    </div>
+</div>
+
+{% endblock %}
