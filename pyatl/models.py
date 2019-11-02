@@ -1,5 +1,8 @@
+from datetime import timedelta
 from django.db import models
 from tinymce import models as tinymce_models
+from ics import Calendar
+from ics import Event as CalendarEvent
 
 
 class Location(models.Model):
@@ -69,3 +72,77 @@ class Page(models.Model):
 
     class Meta:
         ordering = ['name']
+    
+
+class EventInvite(object):
+    '''
+    Creates a ics calendar invite for people to
+    download from site.
+    '''
+
+    def __init__(self, event, host, scheme):
+        '''
+        :param event: Event object
+        :param host: HTTP Host str
+        :param scheme: http or https str
+        '''
+        self._event = event
+        self._host = host
+        self._scheme = scheme
+    
+    def generate(self, duration=2):
+        '''
+        Generates the ics calendar invite
+
+        :param duration: Duration of event in hours.
+                         Defaults to 2 hours.
+        :param type: int
+        '''
+        calendar = Calendar()
+        calendar_event = CalendarEvent()
+        end_datetime = self._event.date + timedelta(hours=duration)
+        calendar_event.begin = self._event.date.strftime('%Y-%m-%d %I:%m:%s')
+        calendar_event.end = end_datetime.strftime('%Y-%m-%d %I:%m:%s')
+        calendar_event.name = self._event.name
+        calendar_event.description = self._description()
+        calendar_event.url = self._url()
+        calendar_event.location = self._location()
+        calendar.events.add(calendar_event)
+        return calendar
+
+    def _url(self):
+        '''
+        Event url in pyatl site.
+        '''
+        return '{0}://{1}/event/{2}/{3}/{4}/'.format(
+            self._scheme,
+            self._host,
+            self._event.slugify_date,
+            self._event.slug,
+            self._event.pk
+            )
+    
+    def _location(self):
+        ''' 
+        The event location name and a link
+        to the location's page on pyatl site. 
+        '''
+        return '{0} - {1}://{2}/location/{3}/{4}/'.format(
+            self._event.location.name,
+            self._scheme,
+            self._host,
+            self._event.location.slug,
+            self._event.location.pk
+            )
+    
+    def _description(self):
+        '''
+        The event description.
+        Includes a link to the event page
+        and a lino to the location.
+        '''
+        return '{0} \n Learn more at: {1} \n Event Location: {2}'.format(
+            self._event.short_description,
+            self._url(),
+            self._location()
+            )

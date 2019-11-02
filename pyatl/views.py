@@ -1,10 +1,12 @@
-from datetime import timedelta
-from ics import Calendar
-from ics import Event as CalendarEvent
 from django.http import HttpResponse
 from django.views.generic import TemplateView, View
 from django.shortcuts import get_object_or_404
-from pyatl.models import Event, Location, Page
+from pyatl.models import (
+    Event,
+    Location,
+    Page,
+    EventInvite,
+    )
 
 
 def footer_links(context):
@@ -42,9 +44,9 @@ class EventView(TemplateView):
         return context
 
 
-class EventDownloadCalendarInviteView(View):
+class EventInviteDownloadView(View):
     '''
-    Allows user to download a calendaxr invite
+    Allows user to download a calendar invite
     for an event.
     '''
 
@@ -54,28 +56,9 @@ class EventDownloadCalendarInviteView(View):
         for users to download.
         '''
         event = get_object_or_404(Event, pk=kwargs['pk'], published=True)
-        end_datetime = event.date + timedelta(hours=2)
-
-        calendar = Calendar()
-        calendar_event = CalendarEvent()
-
-        calendar_event.name = event.name
-        calendar_event.begin = event.date.strftime('%Y-%m-%d %I:%m:%s')
-        calendar_event.end = end_datetime.strftime('%Y-%m-%d %I:%m:%s')
-        calendar_event.url = '{0}/event/{1}/{2}/{3}'.format(
-            request.META.get('HTTP_HOST'),
-            event.slugify_date,
-            event.slug,
-            event.pk)
-        calendar_event.location = '{0} - {1}/location/{2}/{3}'.format(
-            event.location.name,
-            request.META.get('HTTP_HOST'),
-            event.location.slug,
-            event.location.pk)
-        calendar_event.description = event.short_description
-
-        calendar.events.add(calendar_event)
-        response = HttpResponse(calendar, content_type='text/calendar')
+        event_invite = EventInvite(event, request.META.get('HTTP_HOST'), request.scheme)
+        invite = event_invite.generate()
+        response = HttpResponse(invite, content_type='text/calendar')
         response['Filename'] = '{0}-{1}.ics'.format(event.slug, event.slugify_date)
         response['Content-Disposition'] = 'attachment; filename={0}-{1}.ics'.format(
             event.slug, event.slugify_date)
