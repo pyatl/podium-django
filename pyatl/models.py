@@ -37,7 +37,8 @@ class Event(models.Model):
     slug = models.SlugField(max_length=100)
     short_description = models.TextField(max_length=280) # size of tweet
     description = tinymce_models.HTMLField() # wysiwyg
-    date = models.DateTimeField()
+    start = models.DateTimeField()
+    end = models.DateTimeField()
     published = models.BooleanField(default=False)
     location = models.ForeignKey('Location', on_delete=models.PROTECT)
 
@@ -45,11 +46,14 @@ class Event(models.Model):
         return self.name
     
     @property
-    def slugify_date(self):
-        return self.date.strftime('%Y-%m-%d')
+    def slugify_start(self):
+        '''
+        Event.start.date as slug
+        '''
+        return self.start.strftime('%Y-%m-%d')
     
     class Meta:
-        ordering = ['date']
+        ordering = ['start']
 
 
 class Page(models.Model):
@@ -90,19 +94,14 @@ class EventInvite(object):
         self._host = host
         self._scheme = scheme
     
-    def generate(self, duration=2):
+    def generate(self):
         '''
         Generates the ics calendar invite
-
-        :param duration: Duration of event in hours.
-                         Defaults to 2 hours.
-        :param type: int
         '''
         calendar = Calendar()
         calendar_event = CalendarEvent()
-        end_datetime = self._event.date + timedelta(hours=duration)
-        calendar_event.begin = self._event.date.strftime('%Y-%m-%d %I:%m:%s')
-        calendar_event.end = end_datetime.strftime('%Y-%m-%d %I:%m:%s')
+        calendar_event.begin = self._event.start
+        calendar_event.end = self._event.end
         calendar_event.name = self._event.name
         calendar_event.description = self._description()
         calendar_event.url = self._url()
@@ -117,7 +116,7 @@ class EventInvite(object):
         return '{0}://{1}/event/{2}/{3}/{4}/'.format(
             self._scheme,
             self._host,
-            self._event.slugify_date,
+            self._event.slugify_start,
             self._event.slug,
             self._event.pk
             )

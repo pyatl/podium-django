@@ -59,9 +59,9 @@ class EventInviteDownloadView(View):
         event_invite = EventInvite(event, request.META.get('HTTP_HOST'), request.scheme)
         invite = event_invite.generate()
         response = HttpResponse(invite, content_type='text/calendar')
-        response['Filename'] = '{0}-{1}.ics'.format(event.slug, event.slugify_date)
+        response['Filename'] = '{0}-{1}.ics'.format(event.slug, event.slugify_start)
         response['Content-Disposition'] = 'attachment; filename={0}-{1}.ics'.format(
-            event.slug, event.slugify_date)
+            event.slug, event.slugify_start)
         return response
 
 

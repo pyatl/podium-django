@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
+{% load tz %}
 
 {% block twitter_card_title %}PyATL Python Atlanta Programmers{% endblock %}
-{% block twitter_card_description %}PyATL's official webapp{% endblock %}
+{% block twitter_card_description %}PyATL's official page{% endblock %}
 
 
 {% block page_title %}PyATL Python Atlanta Programmers{% endblock %}
@@ -32,13 +33,15 @@
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
               <div class="card-body">
-                  <p class="date">{{ event.date }}</p>
-                  <h5 class="card-title">{{ event.name }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Location: <a href="{% url 'location' slug=event.location.slug pk=event.location.pk %}">{{ event.location.name }}</a></h6>
-                <p class="card-text">{{ event.short_description }}</p>
+                  {% timezone "America/New_York" %}
+                  <p class="date">{{ event.start }}</p>
+                  {% endtimezone %}
+                  <h5 class="card-title">{{ event.name|capfirst }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Location: <a href="{% url 'location' slug=event.location.slug pk=event.location.pk %}">{{ event.location.name|capfirst }}</a></h6>
+                <p class="card-text">{{ event.short_description|capfirst }}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <a type="button" href="{% url 'event' date=event.slugify_date slug=event.slug pk=event.pk %}" class="btn btn-sm btn-outline-secondary">Learn More</a>
+                    <a type="button" href="{% url 'event' date=event.slugify_start slug=event.slug pk=event.pk %}" class="btn btn-sm btn-outline-primary">Learn More</a>
                   </div>
                 </div>
               </div>

@@ -4,7 +4,7 @@ from pyatl.models import Location, Event, Page
 
 class EventAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
-    list_display = ('name', 'date', 'location')
+    list_display = ('name', 'start', 'location')
 
 class LocationAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}

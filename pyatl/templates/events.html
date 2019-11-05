@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load tz %}
 
 {% block twitter_card_title %}PyATL Events List {% endblock %}
 {% block twitter_card_description %}List of PyATL events.{% endblock %}
@@ -19,7 +20,10 @@
         
             <div class="row">
                     <div class="col-md-8 mb-2">
-                        <h6><span class="date">{{ event.date }}</span><a href="{% url 'event' date=event.slugify_date slug=event.slug pk=event.pk %}"> - {{event.name}}</a></h6>
+                        {% timezone "America/New_York" %}
+                        <h6><span class="date">{{ event.start }}</span>
+                        {% endtimezone %}
+                        <a href="{% url 'event' date=event.slugify_start slug=event.slug pk=event.pk %}"> - {{ event.name|capfirst }}</a></h6>
                     </div>
             </div>
 
