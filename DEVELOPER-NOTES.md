@@ -1,3 +1,5 @@
+On the `pyatl` website:
+
 ### Location Maps
 
 The Location model has a field called `map_embed_code`.
@@ -27,3 +29,9 @@ Otherwise it breaks the responsive layout.
 The app now has the `django-tinymce` installed. It allows to convert textareas into WYSIWYG editors.
 This also includes those im the admin site. Read the docs!
 [django-tinymce documentation](https://django-tinymce.readthedocs.io/en/latest/usage.html)
+
+### Bootstrap versions
+
+The podium side of things uses Bootstrap 3.
+The pyatl website side uses Bootstrap 4.
+The apps do not share templates.
