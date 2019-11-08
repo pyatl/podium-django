@@ -14,3 +14,4 @@ podium/lib
 podium/pip-selfcheck.json
 podium/pyvenv.cfg
 db.sqlite3
+.venv

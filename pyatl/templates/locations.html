@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block twitter_card_title %}PyATL Event Locations{% endblock %}
+{% block twitter_card_description %}Locations and directions where PyATL meets.{% endblock %}
+{% block page_title %}PyATL Event Locations {% endblock %}
+
+
+{% block body %} 
+
+<div class="py-5">
+    <div class="container">
+            <div class="row">
+                    <div class="col-md-8 mt-5 mb-5">
+                        <p>PyATL's offline events are possible thanks to the different businesses and organizations that host us.
+                           We are thankful for their support.
+                        </p>
+    
+                    </div>
+    
+                </div>
+
+            {% for location in locations %}
+        
+            <div class="row">
+                    <div class="col-md-8 mb-2">
+                        <h4><a href="{% url 'location' slug=location.slug pk=location.pk %}">{{location.name}}</a></h4>
+                    </div>
+            </div>
+
+            {% endfor %}
+        
+ 
+
+    </div>
+</div>
+
+{% endblock %}

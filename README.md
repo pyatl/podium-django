@@ -6,6 +6,9 @@ Podium is an application for booking and scheduling talks for meetups.  This
 app is being maintained by Python Atlanta Jam Session members to help schedule
  talks for our Python Atlanta meetups.
 
+Podium also has functionality for PyATL's website. This funcitonality is in the `pyatl` directory and is separate
+from the rest of the codebase. It is not maintained by the Jam session members.
+
 Python Atlanta's Podium is currently running at
 https://pyatl-podium.herokuapp.com/
 
@@ -20,6 +23,11 @@ https://pyatl-podium.herokuapp.com/
 - python-dotenv 0.6.4 - Parse environment variables from .env files
 - django-crispy-forms 1.6.1- Adds bootstrap3 input styling to forms.
 - django-registration-redux 1.7 - User registration.
+- arrow 0.14.7 - ics dependency
+- Click 7.0 - ics dependency
+- ics 0.6 - Generates ics calendar invites
+- TatSu 4.4.0 - ics dependency
+- six 1.12.0 - Python 2 to 3 compatibility library
 
 NOTE:  Podium is designed to be run on Heroku but can be used on any platform
 supporting [12 Factor Apps](https://12factor.net/).

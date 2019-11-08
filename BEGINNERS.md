@@ -8,6 +8,10 @@ practices used throughout the open source community.  While these instructions
 are intended to be specific to *this* project, they should be applicable to
 many other projects, both open source and private.
 
+The podium code is inside the `podium` directory. There is also
+code for the PyATL website in the `pyatl` directory. They are both separate.
+Changes in one should not affect the other.
+
 ## What You Need ##
 Before you can begin coding and contributing, you'll need the following:
 - A Github account.  You can sign up for a free account [here](
@@ -67,8 +71,8 @@ something unrelated to your own changes.
 - **(Optional)** Set up a [virtualenv](https://virtualenv.pypa.io/en/stable/)
 for the project.  This will help avoid any unwanted interaction with any other
 projects you may have on your development machine.
-    - Create the virtualenv.  You can call it whatever you like and keep it
-in whatever directory you like.
+    - Create the virtualenv.  You can call it whatever you like (except `.env`) and keep it
+in whatever directory you like. Not sure what to call it? `.venv` is commonly used.
         ```
         python3 -m venv <virtualenv directory>
         ```
