@@ -26,9 +26,12 @@ class LandingPageView(TemplateView):
     template_name = 'landing-page.html'
 
     def get_context_data(self, **kwargs):
+        '''
+        Returns latest 3 events sorted by date
+        '''
         context = super(LandingPageView, self).get_context_data(**kwargs)
         context['events'] = Event.objects.filter(
-            published=True)[:3] # 3 upcoming events
+            published=True)[:3]
         context = footer_links(context)
         return context
 
@@ -39,7 +42,11 @@ class EventView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(EventView, self).get_context_data(**kwargs)
-        context['event'] = get_object_or_404(Event, pk=kwargs['pk'], published=True)
+        context['event'] = get_object_or_404(
+            Event,
+            pk=kwargs['pk'],
+            published=True
+        )
         context = footer_links(context)
         return context
 
@@ -56,12 +63,13 @@ class EventInviteDownloadView(View):
         for users to download.
         '''
         event = get_object_or_404(Event, pk=kwargs['pk'], published=True)
-        event_invite = EventInvite(event, request.META.get('HTTP_HOST'), request.scheme)
+        event_invite = EventInvite(
+            event, request.META.get('HTTP_HOST'), request.scheme)
         invite = event_invite.generate()
         response = HttpResponse(invite, content_type='text/calendar')
-        response['Filename'] = '{0}-{1}.ics'.format(event.slug, event.slugify_start)
-        response['Content-Disposition'] = 'attachment; filename={0}-{1}.ics'.format(
-            event.slug, event.slugify_start)
+        filename = '{0}-{1}.ics'.format(event.slug, event.slugify_start)
+        response['Filename'] = filename
+        response['Content-Disposition'] = 'attachment; {0}'.format(filename)
         return response
 
 

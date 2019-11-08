@@ -6,8 +6,10 @@ class EventAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     list_display = ('name', 'start', 'location')
 
+
 class LocationAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
+
 
 class PageAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}

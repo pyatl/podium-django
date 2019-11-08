@@ -179,4 +179,4 @@ LOGIN_REDIRECT_URL = '/talks/sessions/'
 
 # TinyMCE
 
-TINYMCE_DEFAULT_CONFIG = {'theme': 'advanced',}
+TINYMCE_DEFAULT_CONFIG = {'theme': 'advanced', }

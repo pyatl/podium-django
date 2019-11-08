@@ -14,7 +14,8 @@
             <div class="row">
                     <div class="col-md-8 mb-2">
                         {% timezone "America/New_York" %}
-                        <p>Starts: <span class="date">{{ event.start }}</span> - Ends: <span class="date">{{ event.end }}</span></p>
+                        <p><span class="grey">Starts:</span><strong> {{ event.start }} </strong>
+                        <span class="grey">Ends:</span><strong> {{ event.end }} </strong></p>
                         {% endtimezone %}
                     </div>
             </div>

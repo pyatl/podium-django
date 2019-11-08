@@ -1,4 +1,3 @@
-from datetime import timedelta
 from django.db import models
 from tinymce import models as tinymce_models
 from ics import Calendar
@@ -8,19 +7,20 @@ from ics import Event as CalendarEvent
 class Location(models.Model):
     '''
     Defines an event's location.
-    For physycal locations it allows 
-    for optional open street maps embed codes.
-    This is an iframe embed code provided 
+    For physycal locations it allows
+    for optional open street maps embed codes
+    in the field map_embed_code.
+    This is an iframe embed code provided
     in the open street maps website.
 
-    For online locations, simply leave the map_embed_code 
+    For online locations, simply leave the map_embed_code
     field blank and include a link to the online room
     in the description.
     '''
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
-    description = tinymce_models.HTMLField() # wysiwyg
-    map_embed_code = models.TextField(blank=True) # open street map embed code
+    description = tinymce_models.HTMLField()
+    map_embed_code = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
@@ -32,11 +32,13 @@ class Location(models.Model):
 class Event(models.Model):
     '''
     Defines a group event.
+
+    short_description: Tweet sized event description
     '''
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
-    short_description = models.TextField(max_length=280) # size of tweet
-    description = tinymce_models.HTMLField() # wysiwyg
+    short_description = models.TextField(max_length=280)
+    description = tinymce_models.HTMLField()
     start = models.DateTimeField()
     end = models.DateTimeField()
     published = models.BooleanField(default=False)
@@ -44,14 +46,14 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def slugify_start(self):
         '''
         Event.start.date as slug
         '''
         return self.start.strftime('%Y-%m-%d')
-    
+
     class Meta:
         ordering = ['start']
 
@@ -61,13 +63,13 @@ class Page(models.Model):
     Defines a generic content page.
     Meant for content like the Code of Conduct.
 
-    Field footer_link defines if a link to this page 
+    Field footer_link defines if a link to this page
     should be included in the footer area.
     '''
     name = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
-    content = tinymce_models.HTMLField() # wysiwyg
+    content = tinymce_models.HTMLField()
     published = models.BooleanField(default=False)
     footer_link = models.BooleanField(default=False)
 
@@ -76,7 +78,7 @@ class Page(models.Model):
 
     class Meta:
         ordering = ['name']
-    
+
 
 class EventInvite(object):
     '''
@@ -93,7 +95,7 @@ class EventInvite(object):
         self._event = event
         self._host = host
         self._scheme = scheme
-    
+
     def generate(self):
         '''
         Generates the ics calendar invite
@@ -120,11 +122,11 @@ class EventInvite(object):
             self._event.slug,
             self._event.pk
             )
-    
+
     def _location(self):
-        ''' 
+        '''
         The event location name and a link
-        to the location's page on pyatl site. 
+        to the location's page on pyatl site.
         '''
         return '{0} - {1}://{2}/location/{3}/{4}/'.format(
             self._event.location.name,
@@ -133,7 +135,7 @@ class EventInvite(object):
             self._event.location.slug,
             self._event.location.pk
             )
-    
+
     def _description(self):
         '''
         The event description.
