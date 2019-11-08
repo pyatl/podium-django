@@ -9,7 +9,7 @@ from pyatl.views import (
     EventInviteDownloadView,
 )
 
-slug = '(?P<slug>[-\w\d]+)'
+slug = '(?P<slug>[-\\w\\d]+)'
 pk = '(?P<pk>[0-9]+)'
 date = '(?P<date>[0-9]{4}-?[0-9]{2}-?[0-9]{2})'
 
